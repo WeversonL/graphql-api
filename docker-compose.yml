@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  graphql-api:
+    build: .
+    container_name: gql-project
+    networks:
+      - gql-apis
+    ports:
+      - 8080:8080
+
+networks:
+  gql-apis:
+    driver: bridge

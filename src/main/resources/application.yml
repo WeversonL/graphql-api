@@ -1,0 +1,36 @@
+spring:
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:testdb}
+    username: ${DATABASE_USERNAME:sa}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: org.h2.Driver
+
+    hikari:
+      connection-timeout: ${POOL_DATA_CONNECTION_TIMEOUT:30000}
+      minimum-idle: ${POOL_DATA_MINIMUM_IDLE:1}
+      maximum-pool-size: ${POOL_DATA_MAXIMUM_POOL_SIZE:10}
+      idle-timeout: ${POOL_DATA_IDLE_TIMEOUT:600000}
+      max-lifetime: ${POOL_DATA_MAX_LIFE_TIME:1800000}
+      auto-commit: ${POOL_DATA_AUTO_COMMIT:true}
+
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  graphql:
+    graphiql:
+      enabled: true
